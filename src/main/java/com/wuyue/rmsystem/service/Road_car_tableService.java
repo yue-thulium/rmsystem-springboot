@@ -22,7 +22,7 @@ public class Road_car_tableService {
     public void updateRCT(Roadway_Information ri){
         road_car_tableMapper.updateRCT(ri);
     }
-    public List<Roadway_Information> getRCT(){
-        return road_car_tableMapper.getRCT();
+    public List<Roadway_Information> getRCT(int road_code){
+        return road_car_tableMapper.getRCT(road_code);
     }
 }

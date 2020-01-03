@@ -12,5 +12,5 @@ public interface Road_car_tableMapper {
     int addRCT(Roadway_Information roadway_information);
     int deleteRCT(Roadway_Information road_damage_information);
     int updateRCT(Roadway_Information road_damage_information);
-    List<Roadway_Information> getRCT();
+    List<Roadway_Information> getRCT(int road_code);
 }

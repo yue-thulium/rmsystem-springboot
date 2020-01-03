@@ -24,7 +24,7 @@
         flat_rock_type=#{flat_rock_type})
         where car_code=#{car_code};
     </update>
-    <select id="getRCT" resultType="com.wuyue.rmsystem.model.Roadway_Information">
-        select * from road_car_table;
+    <select id="getRCT" resultType="com.wuyue.rmsystem.model.Roadway_Information" parameterType="int">
+        select * from road_car_table where road_code=#{road_code};
     </select>
 </mapper>
