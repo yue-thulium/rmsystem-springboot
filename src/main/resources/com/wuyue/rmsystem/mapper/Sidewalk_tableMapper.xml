@@ -26,7 +26,7 @@
         where
         sidewalk_code=#{sidewalk_code};
     </update>
-    <select id="getST" resultType="com.wuyue.rmsystem.model.Sidewalk_information">
-        select * from sidewalk_table;
+    <select id="getST" resultType="com.wuyue.rmsystem.model.Sidewalk_information" parameterType="int">
+        select * from sidewalk_table where road_code=#{road_code};
     </select>
 </mapper>

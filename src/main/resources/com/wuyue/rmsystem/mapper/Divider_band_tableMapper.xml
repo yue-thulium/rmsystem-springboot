@@ -22,7 +22,7 @@
     where
     divider_code=#{divider_code};
     </update>
-    <select id="getDBT" resultType="com.wuyue.rmsystem.model.Divider_band_information">
-        select * from divider_band_table;
+    <select id="getDBT" resultType="com.wuyue.rmsystem.model.Divider_band_information" parameterType="int">
+        select * from divider_band_table where road_code=#{road_code};
     </select>
 </mapper>

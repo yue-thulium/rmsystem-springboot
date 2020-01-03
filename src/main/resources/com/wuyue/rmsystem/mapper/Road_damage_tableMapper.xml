@@ -8,7 +8,7 @@
        road_damage_table
         values (#{damage_code},(select worker_code from worker where name = #{worker_code_name}),#{regular_code},#{road_name},#{check_date}
         ,#{begin_end},#{length},#{width},#{damage_type},#{d_lenth},#{d_width},
-        #{d_height},#{d_position_description},#{d_areas},#{remark},#{manage_unite},#{make_date});
+        #{d_height},#{d_position_description},(#{length}*#{width}),#{remark},#{manage_unite},#{make_date});
     </insert>
     <delete id="deleteRDT" parameterType="com.wuyue.rmsystem.model.Road_damage_information">
         delete from

@@ -22,7 +22,7 @@ public class Sidewalk_tableService {
     public void updateST(Sidewalk_information si){
         sidewalk_tableMapper.updateST(si);
     }
-    public List<Sidewalk_information> getST(){
-        return sidewalk_tableMapper.getST();
+    public List<Sidewalk_information> getST(int road_code){
+        return sidewalk_tableMapper.getST(road_code);
     }
 }

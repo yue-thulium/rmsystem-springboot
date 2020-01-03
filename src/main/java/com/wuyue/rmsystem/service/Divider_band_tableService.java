@@ -22,7 +22,7 @@ public class Divider_band_tableService {
     public void updateDBT(Divider_band_information dbi){
         divider_band_tableMapper.updateDBT(dbi);
     }
-    public List<Divider_band_information> getDBT(){
-       return divider_band_tableMapper.getDBT();
+    public List<Divider_band_information> getDBT(int road_code){
+       return divider_band_tableMapper.getDBT(road_code);
     }
 }

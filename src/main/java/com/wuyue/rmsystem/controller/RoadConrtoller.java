@@ -1,7 +1,7 @@
 package com.wuyue.rmsystem.controller;
 
 import com.wuyue.rmsystem.model.*;
-import com.wuyue.rmsystem.service.Road_Basic_TableService;
+import com.wuyue.rmsystem.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +18,18 @@ import java.util.*;
  *  方法标注格式为 ： "/道路增加（addRoad）/道路修改（updateRoad） /道路查询(getRoad) /道路删除(deleteRoad)"
  */
 @RestController
-@RequestMapping("/rc")
+@RequestMapping("/road")
 public class RoadConrtoller {
     @Autowired
     Road_Basic_TableService road_basic_tableService;
-
+    @Autowired
+    Sidewalk_tableService sidewalk_tableService;
+    @Autowired
+    Road_car_tableService road_car_tableService;
+    @Autowired
+    Divider_band_tableService divider_band_tableService;
+    @Autowired
+    Facilities_tableService facilities_tableService;
 //regular_date,regular_type
     @RequestMapping(value = "/addRoad", method = RequestMethod.POST)
     public void addRoad(Road_Basic_Table rbt) {
@@ -43,5 +50,69 @@ public class RoadConrtoller {
     @RequestMapping(value = "/deleteRoad", method = RequestMethod.POST)
     public void deleteRoad(Road_Basic_Table rbt){
         road_basic_tableService.deleteRBT(rbt);
+    }
+
+    @RequestMapping(value = "/addRoad_sidewalk", method = RequestMethod.POST)
+    public void addRoadSidewalk(Sidewalk_information si) {
+        sidewalk_tableService.addST(si);
+    }
+    @RequestMapping(value = "/updateRoad_sidewalk", method = RequestMethod.POST)
+    public void updateRoadSidedwalk(Sidewalk_information si) {
+        sidewalk_tableService.updateST(si);
+    }
+    @RequestMapping(value = "/getRoad_sidewalk", method = RequestMethod.GET)
+    public Map<String, Object> getRoadSidewalk(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Sidewalk_information> sidewalk_informations=sidewalk_tableService.getST(road_code);
+        map.put("tabledata",sidewalk_informations);
+        return map;
+    }
+
+    @RequestMapping(value = "/addRoad_car", method = RequestMethod.POST)
+    public void addRoad_Car(Roadway_Information si) {
+        road_car_tableService.addRCT(si);
+    }
+    @RequestMapping(value = "/updateRoad_car", method = RequestMethod.POST)
+    public void updateRoad_Car(Roadway_Information si) {
+        road_car_tableService.updateRCT(si);
+    }
+    @RequestMapping(value = "/getRoad_car", method = RequestMethod.GET)
+    public Map<String, Object> getRoad_Car(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Roadway_Information> roadway_informations=road_car_tableService.getRCT(road_code);
+        map.put("tabledata",roadway_informations);
+        return map;
+    }
+
+    @RequestMapping(value = "/addRoad_divider", method = RequestMethod.POST)
+    public void addRoad_Divider(Divider_band_information si) {
+        divider_band_tableService.addDBT(si);
+    }
+    @RequestMapping(value = "/updateRoad_divider", method = RequestMethod.POST)
+    public void updateRoad_Divider(Divider_band_information si) {
+        divider_band_tableService.updateDBT(si);
+    }
+    @RequestMapping(value = "/getRoad_divider", method = RequestMethod.GET)
+    public Map<String, Object> getRoad_Divider(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Divider_band_information> divider_band_informations=divider_band_tableService.getDBT(road_code);
+        map.put("tabledata",divider_band_informations);
+        return map;
+    }
+
+    @RequestMapping(value = "/addRoad_faclities", method = RequestMethod.POST)
+    public void addRoad_Facilities(Facilities_information si) {
+        facilities_tableService.addFT(si);
+    }
+    @RequestMapping(value = "/updateRoad_faclities", method = RequestMethod.POST)
+    public void updateRoad_Facilities(Facilities_information si) {
+        facilities_tableService.addFT(si);
+    }
+    @RequestMapping(value = "/getRoad_faclities", method = RequestMethod.GET)
+    public Map<String, Object> getRoad_Facilities(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Facilities_information> facilities_informations=facilities_tableService.getFT(road_code);
+        map.put("tabledata",facilities_informations);
+        return map;
     }
 }
