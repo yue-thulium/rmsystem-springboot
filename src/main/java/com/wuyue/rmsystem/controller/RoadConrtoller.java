@@ -18,7 +18,7 @@ import java.util.*;
  *  方法标注格式为 ： "/道路增加（addRoad）/道路修改（updateRoad） /道路查询(getRoad) /道路删除(deleteRoad)"
  */
 @RestController
-@RequestMapping("/rc")
+@RequestMapping("/road")
 public class RoadConrtoller {
     @Autowired
     Road_Basic_TableService road_basic_tableService;
