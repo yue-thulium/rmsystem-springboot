@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Regular_inspection_tableMapper">
+    <insert id="addRIT" parameterType="com.wuyue.rmsystem.model.Regular_inspection_information">
+        insert into
+       regular_inspection_table
+        values (#{regular_code},#{regular_date},#{regular_type},#{remark});
+    </insert>
+    <delete id="deleteRIT" parameterType="com.wuyue.rmsystem.model.Regular_inspection_information">
+        delete from
+        regular_inspection_table
+        where regular_code=#{regular_code};
+    </delete>
+    <update id="updateRIT" parameterType="com.wuyue.rmsystem.model.Regular_inspection_information">
+        update
+        regular_inspection_table
+        set regular_date=#{regular_date},regular_type=#{regular_type},remark=#{remark})
+        where regular_code=#{regular_code};
+    </update>
+    <select id="getRIT" resultType="com.wuyue.rmsystem.model.Regular_inspection_information">
+        select * from regular_inspection_table;
+    </select>
+</mapper>

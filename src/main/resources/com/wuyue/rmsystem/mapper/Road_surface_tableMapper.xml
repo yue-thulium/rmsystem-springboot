@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Road_surface_tableMapper">
+    <insert id="addRST" parameterType="com.wuyue.rmsystem.model.Road_surface_information">
+        insert into
+       road_surface_table
+        values (#{surface_code},#{regular_code},(select worker_code from worker where name = #{worker_code_name}),#{road_code}
+        ,#{road_name},#{check_date},#{IRI},#{remark});
+    </insert>
+    <delete id="deleteRST" parameterType="com.wuyue.rmsystem.model.Road_surface_information">
+        delete from
+        road_surface_table
+        where surface_code=#{surface_code};
+    </delete>
+    <update id="updateRST" parameterType="com.wuyue.rmsystem.model.Road_surface_information">
+        update
+        road_surface_table
+        set regular_code=#{regular_code},worker_code=(select worker_code from worker where name = #{worker_code_name}),road_code=#{road_code}
+        ,road_name=#{road_name},check_date=#{check_date},IRI=#{IRI},remark=#{remark}
+        where surface_code=#{surface_code};
+    </update>
+    <select id="getRST" resultType="com.wuyue.rmsystem.model.Road_surface_information">
+        select * from road_surface_table;
+    </select>
+    <select id="getRPbyRoad" resultType="com.wuyue.rmsystem.model.Road_surface_information">
+        select * from road_surface_table where road_code=#{road_code}
+        and <![CDATA[ check_date>=#{history}
+        and  check_date<=#{today} ]]>;
+    </select>
+</mapper>

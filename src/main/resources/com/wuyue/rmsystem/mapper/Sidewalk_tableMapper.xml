@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Sidewalk_tableMapper">
+    <insert id="addST" parameterType="com.wuyue.rmsystem.model.Sidewalk_information">
+        insert into
+        sidewalk_table
+        values (#{sidewalk_code},#{road_code},#{direction},#{pavement_type}
+        ,#{sidewalk_length},#{sidewalk_width_range},#{sidewalk_areas},#{intersection_areas},#{blind_length},#{Accessibility_areas},
+        #{lateral_rock_type},#{flat_rock_areas});
+    </insert>
+    <delete id="deleteST" parameterType="com.wuyue.rmsystem.model.Sidewalk_information">
+        delete from
+        sidewalk_table
+        where
+        sidewalk_code=#{sidewalk_code};
+    </delete>
+    <update id="updateST" parameterType="com.wuyue.rmsystem.model.Sidewalk_information">
+        update
+        sidewalk_table
+        set road_code=#{road_code},direction=#{direction},pavement_type=#{pavement_type}
+        ,sidewalk_length=#{sidewalk_length},sidewalk_width_range=#{sidewalk_width_range},sidewalk_areas=#{sidewalk_areas},
+        intersection_areas=#{intersection_areas},blind_length=#{blind_length},Accessibility_areas=#{Accessibility_areas},
+        lateral_rock_type=#{lateral_rock_type},flat_rock_areas=#{flat_rock_areas}
+        where
+        sidewalk_code=#{sidewalk_code};
+    </update>
+    <select id="getST" resultType="com.wuyue.rmsystem.model.Sidewalk_information">
+        select * from sidewalk_table;
+    </select>
+</mapper>

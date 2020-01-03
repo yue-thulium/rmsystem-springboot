@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Damage_facilities_noticeMapper">
+    <insert id="addDFN" parameterType="com.wuyue.rmsystem.model.Damage_facilities_notice">
+        insert into
+        damage_facilities_notice
+        values (#{notice_code},#{road_code},#{facilities_name},#{damage_position}
+        ,#{damage_reason},#{opinions},#{repair_time},#{notice_date},#{monitor}
+        ,(select worker_code from worker where name = #{technical_person_name})
+        ,(select worker_code from worker where name = #{check_person_name}));
+    </insert>
+    <delete id="deleteDFN" parameterType="com.wuyue.rmsystem.model.Damage_facilities_notice">
+        delete from
+        damage_facilities_notice
+        where notice_code=#{notice_code};
+    </delete>
+    <select id="getDFN" resultType="com.wuyue.rmsystem.model.Damage_facilities_notice">
+        select * from damage_facilities_notice;
+    </select>
+    <update id="updateDFN" parameterType="com.wuyue.rmsystem.model.Damage_facilities_notice">
+        update
+        damage_facilities_notice
+        set notice_code=#{notice_code},road_code=#{road_code},facilities_name=#{facilities_name},damage_position=#{damage_position},
+        damage_reason=#{damage_reason},opinions=#{opinions},repair_time=#{repair_time},notice_date=#{notice_date},monitor=#{monitor},
+        technical_person=(select worker_code from worker where name = #{technical_person_name}),
+        check_person=(select worker_code from worker where name = #{check_person_name})
+        where notice_code=#{notice_code};
+    </update>
+</mapper>

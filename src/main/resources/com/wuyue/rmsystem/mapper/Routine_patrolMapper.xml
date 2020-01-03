@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Routine_patrolMapper">
+    <insert id="addRP" parameterType="com.wuyue.rmsystem.model.Routine_patrol">
+        insert into
+       routine_patrol
+        values (#{patrol_code},(select worker_code from worker where name = #{woker_code_name}),#{road_code},#{patrol_date}
+        ,#{d_type},#{d_position_description},#{remarks},#{manage_unit});
+    </insert>
+    <delete id="deleteRP" parameterType="com.wuyue.rmsystem.model.Routine_patrol">
+        delete from
+        routine_patrol
+        where
+        patrol_code=#{patrol_code};
+    </delete>
+    <update id="updateRP" parameterType="com.wuyue.rmsystem.model.Routine_patrol">
+        update
+        routine_patrol
+        set worker_code=(select worker_code from worker where name = #{woker_code_name}),road_code=#{road_code},patrol_date=#{patrol_date},
+        d_type#{d_type},d_position_description=#{d_position_description},remarks=#{remarks},manage_unit=#{manage_unit})
+        where
+        patrol_code=#{patrol_code};
+    </update>
+    <select id="getRP" resultType="com.wuyue.rmsystem.model.Routine_patrol">
+        select * from routine_patrol;
+    </select>
+    <select id="getRPbyRoad" resultType="com.wuyue.rmsystem.model.Routine_patrol">
+        select * from routine_patrol where road_code=#{road_code}
+        and <![CDATA[ patrol_date>=#{history}
+        and  patrol_date<=#{today} ]]>;
+    </select>
+</mapper>

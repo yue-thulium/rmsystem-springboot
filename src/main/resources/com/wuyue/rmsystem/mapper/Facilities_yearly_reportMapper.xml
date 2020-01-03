@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Facilities_yearly_reportMapper">
+    <insert id="addFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
+        insert into
+       facilities_yearly_report
+        values (#{check_date},#{road_code},#{evaluation_index},#{planeness}
+        ,#{damage_condition});
+    </insert>
+    <delete id="deleteFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
+        delete from
+        facilities_yearly_report
+        where check_date=#{check_date};
+    </delete>
+    <update id="updateFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
+        UPDATE
+        facilities_yearly_report
+        SET road_code=#{road_code},evaluation_index=#{evaluation_index},planeness=#{planeness},
+        damage_condition=#{damage_condition}
+        where check_date=#{check_date};
+    </update>
+    <select id="getFYR" resultType="com.wuyue.rmsystem.model.Year_Facility_report">
+        select * from facilities_yearly_report;
+    </select>
+</mapper>

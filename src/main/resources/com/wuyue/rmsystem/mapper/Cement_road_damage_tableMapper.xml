@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Cement_road_damage_tableMapper">
+    <insert id="addCRDT" parameterType="com.wuyue.rmsystem.model.CementRoad_pavement_damage_information">
+        insert into
+       road_basic_table
+        values (#{cement_road_code},(select worker_code from worker where name = #{woker_code_name}),#{damage_code},#{d_type}
+        ,#{inspect_arears},#{damage_areas},#{d_density},#{single_point_deduction},#{remark},#{check_date});
+    </insert>
+    <delete id="deleteCRDT" parameterType="com.wuyue.rmsystem.model.CementRoad_pavement_damage_information">
+        delete from
+        cement_road_damage_table
+        where cement_road_code=#{cement_road_code};
+    </delete>
+    <update id="updateCRDT" parameterType="com.wuyue.rmsystem.model.CementRoad_pavement_damage_information">
+        update
+        cement_road_damage_table
+        set worker_code=(select worker_code from worker where name = #{woker_code_name}),damage_code=#{damage_code},
+        d_type=#{d_type},inspect_arears=#{inspect_arears},damage_areas=#{damage_areas},d_density=#{d_density},
+        single_point_deduction=#{single_point_deduction},remark=#{remark},check_date=#{check_date}
+        where cement_road_code=#{cement_road_code};
+    </update>
+    <select id="getCRDT" resultType="com.wuyue.rmsystem.model.CementRoad_pavement_damage_information">
+        select * from cement_road_damage_table
+    </select>
+</mapper>

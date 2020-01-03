@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.WorkerMapper">
+    <insert id="addW" parameterType="com.wuyue.rmsystem.model.Worker">
+        insert into
+       worker
+        values (#{worker_code},#worker_password,#{name},#{age}
+        ,#{sex},#{birthday},#{join_date});
+    </insert>
+    <delete id="deleteW" parameterType="com.wuyue.rmsystem.model.Worker">
+        delete from
+        worker
+        where worker_code=#{worker_code};
+    </delete>
+    <update id="updateW" parameterType="com.wuyue.rmsystem.model.Worker">
+        update
+        worker
+        set worker_password=#worker_password,name=#{name},age=#{age},
+        sex=#{sex},birthday=#{birthday},join_date=#{join_date}
+        where
+        worker_code=#{worker_code};
+    </update>
+</mapper>

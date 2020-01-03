@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Facilities_tableMapper">
+    <insert id="addFT" parameterType="com.wuyue.rmsystem.model.Facilities_information">
+        insert into
+      facilities_table
+        values (#{facilities_code},#{road_code},#{inlets_amount},#{well_amount}
+        ,#{nameplates_amount},#{signboards_amount},#{treepool_area},#{other});
+    </insert>
+    <delete id="deleteFT" parameterType="com.wuyue.rmsystem.model.Facilities_information">
+        delete from
+        facilities_table
+        where
+        facilities_code=#{facilities_code};
+    </delete>
+    <update id="updateFT" parameterType="com.wuyue.rmsystem.model.Facilities_information">
+        update
+        facilities_table
+        set road_code=#{road_code},inlets_amount=#{inlets_amount},well_amount=#{well_amount},
+        nameplates_amount=#{nameplates_amount},signboards_amount=#{signboards_amount},
+        treepool_area=#{treepool_area},other=#{other})
+        where facilities_code=#{facilities_code};
+    </update>
+    <select id="getFT" resultType="com.wuyue.rmsystem.model.Facilities_information">
+        select * from facilities_table;
+    </select>
+
+</mapper>

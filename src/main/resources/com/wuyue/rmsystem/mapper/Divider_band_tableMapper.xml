@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Divider_band_tableMapper">
+    <insert id="addDBT" parameterType="com.wuyue.rmsystem.model.Divider_band_information">
+       insert into
+        divider_band_table
+        values (#{divider_code},#{road_code},#{divider_type},#{length},
+        #{width},#{height},#{areas});
+    </insert>
+    <delete id="deleteDBT" parameterType="com.wuyue.rmsystem.model.Divider_band_information">
+      delete from
+      divider_band_table
+      where divider_code=#{divider_code};
+    </delete>
+    <update id="updateDBT" parameterType="com.wuyue.rmsystem.model.Divider_band_information">
+    update
+    divider_band_table
+    set road_code=#{road_code},divider_type=#{divider_type},length=#{length},
+    width=#{width},height=#{height},areas=#{areas}
+    where
+    divider_code=#{divider_code};
+    </update>
+    <select id="getDBT" resultType="com.wuyue.rmsystem.model.Divider_band_information">
+        select * from divider_band_table;
+    </select>
+</mapper>

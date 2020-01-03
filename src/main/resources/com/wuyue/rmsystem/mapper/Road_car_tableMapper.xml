@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Road_car_tableMapper">
+    <insert id="addRCT" parameterType="com.wuyue.rmsystem.model.Roadway_Information">
+         insert into
+        road_car_table
+        values (#{car_code},#{road_code},#{pavement_type},#{pavement_thickness}
+        ,#{grassroots_type},#{grassroots_thickness},#{lanes},#{direction},#{motorway_width_range},#{r_m_w_r},
+        #{l_m_w_r},#{lane_areas},#{lateral_rock_type},#{lateral_rock_length},#{flat_rock_type});
+    </insert>
+    <delete id="deleteRCT" parameterType="com.wuyue.rmsystem.model.Roadway_Information">
+          delete from
+        road_car_table
+        where car_code=#{car_code};
+    </delete>
+    <update id="updateRCT" parameterType="com.wuyue.rmsystem.model.Roadway_Information">
+         update
+        road_car_table
+        set road_code=#{road_code},pavement_type=#{pavement_type},pavement_thickness=#{pavement_thickness},grassroots_type=#{grassroots_type},
+        grassroots_thickness=#{grassroots_thickness},lanes=#{lanes},direction=#{direction},motorway_width_range=#{motorway_width_range},
+        r_m_w_r=#{r_m_w_r},l_m_w_r= #{l_m_w_r},lane_areas=#{lane_areas},lateral_rock_type=#{lateral_rock_type},lateral_rock_length=#{lateral_rock_length},
+        flat_rock_type=#{flat_rock_type})
+        where car_code=#{car_code};
+    </update>
+    <select id="getRCT" resultType="com.wuyue.rmsystem.model.Roadway_Information">
+        select * from road_car_table;
+    </select>
+</mapper>

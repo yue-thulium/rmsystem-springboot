@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Asphalt_pavement_tableMapper">
+    <insert id="addAPT" parameterType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
+        insert into
+       asphalt_pavement_table
+        values (#{asphalt_pavement_code},(select worker_code from worker where name = #{woker_code_name}),#{damage_code},#{d_type}
+        ,#{inspect_areas},#{d_areas},#{d_density},#{single_point_deduction},#{remark},#{inspect_date});
+    </insert>
+    <delete id="deleteAPT" parameterType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
+        delete from
+        asphalt_pavement_table
+        where asphalt_pavement_code = #{asphalt_pavement_code};
+    </delete>
+    <update id="updateAPT" parameterType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
+        update
+        asphalt_pavement_table
+        set worker_code=(select worker_code from worker where name = #{woker_code_name}),damage_code=#{damage_code},d_type=#{d_type},
+        inspect_areas=#{inspect_areas},d_areas=#{d_areas},d_density=#{d_density},single_point_deduction=#{single_point_deduction},
+        remark=#{remark},inspect_date=#{inspect_date}
+        where asphalt_pavement_code=#{asphalt_pavement_code};
+    </update>
+    <select id="getAPT" resultType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
+        select * from asphalt_pavement_table
+    </select>
+</mapper>

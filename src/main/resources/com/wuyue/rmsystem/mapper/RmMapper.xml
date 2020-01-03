@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.RmMapper">
+    <select id="loadUserByUsername" resultType="com.wuyue.rmsystem.model.Rm">
+        select * from rm where username=#{username}
+    </select>
+    <select id="getUserRolesByUid" resultType="com.wuyue.rmsystem.model.Role">
+        select r.* from role r,rm_role rr where r.id=rr.roleid and rr.rmid=#{id}
+    </select>
+    <insert id="saveNewRm">
+        INSERT INTO rm VALUES(default,#{name},#{username},#{password},DEFAULT,DEFAULT);
+        INSERT INTO rm_role VALUES(DEFAULT,(SELECT id FROM rm WHERE username=#{username}),(select  id from role where nameZH=#{role}));
+    </insert>
+</mapper>

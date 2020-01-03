@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyue.rmsystem.mapper.Road_Basic_TableMapper">
+<insert id="addRBT" parameterType="com.wuyue.rmsystem.model.Road_Basic_Table">
+        insert into
+       road_basic_table
+        values (#{road_code},#{username},#{road_name},#{road_trend}
+        ,#{road_begin},#{road_end},#{design_unite},#{construction_unite},#{road_class},#{pavement_class},
+        #{yanghu_class},#{road_width_range},#{road_length},#{road_area},#{AADT},#{traffic_class},#{town},
+        #{manage_sort},#{manage_unite},#{maintenance_unite},#{build_date},#{table_unite},#{auditor},#{table_maker},
+        #{table_make_time},#{road_prevent});
+        insert into
+       road_surface_table (regular_code,road_code,road_name)
+        value ((select regular_code from regular_inspection_table where regular_type=#{regular_type}),#{road_code},#{road_name});
+        insert into
+        road_damage_table (regular_code,road_code)
+        value ((select regular_code from rmsystem.regular_inspection_table where regular_type='道路设施检查'),#{road_code});
+
+    </insert>
+    <delete id="deleteRBT" parameterType="com.wuyue.rmsystem.model.Road_Basic_Table">
+        delete from
+        road_basic_table
+        where Road_code=#{Road_code};
+    </delete>
+    <update id="updateRBT" parameterType="com.wuyue.rmsystem.model.Road_Basic_Table">
+        update
+        road_basic_table
+        set username=#{username},road_name=#{road_name},road_trend=#{road_trend}
+        ,road_begin=#{road_begin},road_end=#{road_end},design_unite=#{design_unite},construction_unite=#{construction_unite},
+        road_class=#{road_class},pavement_class=#{pavement_class},
+        yanghu_class=#{yanghu_class},road_width_range=#{road_width_range},road_length=#{road_length},road_area=#{road_area},
+        AADT=#{AADT},traffic_class=#{traffic_class},town=#{town},
+        manage_sort=#{manage_sort},manage_unite=#{manage_unite},maintenance_unite=#{maintenance_unite},build_date=#{build_date},
+        table_unite=#{table_unite},auditor=#{auditor},table_maker=#{table_maker},
+        table_make_time=#{table_make_time},road_prevent=#{road_prevent}
+        where
+        Road_code=#{Road_code};
+    </update>
+    <select id="getRBT" resultType="com.wuyue.rmsystem.model.Road_Basic_Table" parameterType="String">
+        select * from road_basic_table where manage_sort=#{sort};
+    </select>
+    <select id="getRBTall" resultType="com.wuyue.rmsystem.model.Road_Basic_Table" >
+        select * from road_basic_table ;
+    </select>
+    <update id="addDFN" parameterType="int">
+        update road_basic_table set road_prevent='false' where road_code=#{id};
+    </update>
+    <update id="deleteDFN" parameterType="int">
+        update road_basic_table set road_prevent='true' where road_code=#{id};
+    </update>
+    <update id="changeState" parameterType="com.wuyue.rmsystem.model.Road_Basic_Table">
+        update road_basic_table set road_state=#{road_state} where road_code=#{road_code};
+    </update>
+</mapper>
