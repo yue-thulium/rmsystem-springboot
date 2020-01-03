@@ -53,16 +53,11 @@ public class ConfigController {
      * @return
      */
     @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
-    public String register(HttpServletRequest request) {
-        Rm rm =new Rm();
-        String name = request.getParameter("name");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String role = request.getParameter("role");
-        rm.setName(name);
-        rm.setUsername(username);
-        rm.setPassword(password);
-        rmService.addRm(rm,role);
-        return rm == null ? "注册失败" : "注册成功";
+    public String register(Rm rm) {
+        if ("1222".equals(rm.getCode())) {
+            return rmService.addRm(rm,rm.getRole()) == null ? "注册失败" : "注册成功";
+        } else {
+            return "注册失败";
+        }
     }
 }

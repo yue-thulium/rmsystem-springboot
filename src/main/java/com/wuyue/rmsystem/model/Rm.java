@@ -21,6 +21,8 @@ public class Rm implements UserDetails {
     private String password;
     private boolean locked;
     private boolean enable;
+    private String role;
+    private String code;
     private List<Role> roles;
 
     @Override
@@ -114,4 +116,19 @@ public class Rm implements UserDetails {
         this.roles = roles;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }
