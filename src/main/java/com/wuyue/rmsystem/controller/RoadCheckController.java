@@ -153,7 +153,7 @@ public class RoadCheckController {
     public Map<String, Object> conventionalDetection() {
         Map<String, Object> map = new HashMap<>();
         List<Road_surface_information> road_surface_informations=road_surface_tableService.getRST();
-        map.put("tabledate",this.formatRoadRegularInf(road_surface_informations,0));
+        map.put("tabledate",this.formatRoadRegularInf(road_surface_informations,1));
         return map;
     }
 
@@ -192,7 +192,7 @@ public class RoadCheckController {
     public Map<String, Object> getRoad_damage_information() {
         Map<String, Object> map = new HashMap<>();
         List<Road_damage_information> road_damage_informations=road_damage_tableService.getRDT();
-        map.put("tabledata",this.formatRoadDamageInf(road_damage_informations,0));
+        map.put("tabledata",this.formatRoadDamageInf(road_damage_informations,1));
         return map;
     }
     @RequestMapping(value = "/ri/updateRDT",method = RequestMethod.POST)
@@ -264,7 +264,7 @@ public class RoadCheckController {
         for (Road_damage_information r: list) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            calendar.add(Calendar.DAY_OF_YEAR,-i);
+            calendar.add(Calendar.YEAR,-i);
             history = calendar.getTime();
 
             List<Road_damage_information> regular_inspection_informations=road_damage_tableService.getRPbyRoad(r.getRoad_name(),formatter.format(history),formatter.format(date));
