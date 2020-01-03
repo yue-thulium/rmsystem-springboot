@@ -10,5 +10,5 @@ public interface Facilities_tableMapper {
     int addFT(Facilities_information facilities_information);
     int deleteFT(Facilities_information facilities_information);
     int updateFT(Facilities_information facilities_information);
-    List<Facilities_information> getFT();
+    List<Facilities_information> getFT(int road_code);
 }

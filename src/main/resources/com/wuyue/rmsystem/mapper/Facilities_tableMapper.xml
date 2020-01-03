@@ -23,8 +23,8 @@
         treepool_area=#{treepool_area},other=#{other})
         where facilities_code=#{facilities_code};
     </update>
-    <select id="getFT" resultType="com.wuyue.rmsystem.model.Facilities_information">
-        select * from facilities_table;
+    <select id="getFT" resultType="com.wuyue.rmsystem.model.Facilities_information" parameterType="int">
+        select * from facilities_table where road_code=#{road_code};
     </select>
 
 </mapper>

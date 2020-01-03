@@ -84,4 +84,35 @@ public class RoadConrtoller {
         return map;
     }
 
+    @RequestMapping(value = "/addRoad_divider", method = RequestMethod.POST)
+    public void addRoad_Divider(Divider_band_information si) {
+        divider_band_tableService.addDBT(si);
+    }
+    @RequestMapping(value = "/updateRoad_divider", method = RequestMethod.POST)
+    public void updateRoad_Divider(Divider_band_information si) {
+        divider_band_tableService.updateDBT(si);
+    }
+    @RequestMapping(value = "/getRoad_divider", method = RequestMethod.GET)
+    public Map<String, Object> getRoad_Divider(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Divider_band_information> divider_band_informations=divider_band_tableService.getDBT(road_code);
+        map.put("tabledata",divider_band_informations);
+        return map;
+    }
+
+    @RequestMapping(value = "/addRoad_faclities", method = RequestMethod.POST)
+    public void addRoad_Facilities(Facilities_information si) {
+        facilities_tableService.addFT(si);
+    }
+    @RequestMapping(value = "/updateRoad_faclities", method = RequestMethod.POST)
+    public void updateRoad_Facilities(Facilities_information si) {
+        facilities_tableService.addFT(si);
+    }
+    @RequestMapping(value = "/getRoad_faclities", method = RequestMethod.GET)
+    public Map<String, Object> getRoad_Facilities(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Facilities_information> facilities_informations=facilities_tableService.getFT(road_code);
+        map.put("tabledata",facilities_informations);
+        return map;
+    }
 }

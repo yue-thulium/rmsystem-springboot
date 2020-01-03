@@ -22,7 +22,7 @@ public class Facilities_tableService {
     public void updateFT(Facilities_information fi){
         facilities_tableMapper.updateFT(fi);
     }
-    public List<Facilities_information> getFT(){
-        return facilities_tableMapper.getFT();
+    public List<Facilities_information> getFT(int road_code){
+        return facilities_tableMapper.getFT(road_code);
     }
 }
