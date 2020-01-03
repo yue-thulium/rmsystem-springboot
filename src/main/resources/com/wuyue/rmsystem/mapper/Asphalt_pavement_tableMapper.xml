@@ -23,6 +23,6 @@
         where asphalt_pavement_code=#{asphalt_pavement_code};
     </update>
     <select id="getAPT" resultType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
-        select * from asphalt_pavement_table
+        select * from asphalt_pavement_table;
     </select>
 </mapper>

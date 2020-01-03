@@ -23,6 +23,6 @@
         where cement_road_code=#{cement_road_code};
     </update>
     <select id="getCRDT" resultType="com.wuyue.rmsystem.model.CementRoad_pavement_damage_information">
-        select * from cement_road_damage_table
+        select * from cement_road_damage_table;
     </select>
 </mapper>
