@@ -18,7 +18,7 @@
     <update id="updateRDT" parameterType="com.wuyue.rmsystem.model.Road_damage_information">
         update
         road_damage_table
-        set worker_code=(select worker_code from worker where name = #{woker_code_name}),regular_code=#{regular_code},road_name=#{road_name},
+        set worker_code=(select worker_code from worker where name = #{woker_code_name}),road_name=#{road_name},
         check_date=#{check_date},begin_end=#{begin_end},length=#{length},width=#{width},damage_type=#{damage_type},d_lenth=#{d_lenth},
         d_width=#{d_width},d_height=#{d_height},d_position_description=#{d_position_description},d_areas=#{d_areas},
         remark=#{remark},manage_unite=#{manage_unite},make_date=#{make_date}
