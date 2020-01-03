@@ -26,7 +26,7 @@ public class Road_surface_tableService {
     public List<Road_surface_information> getRST(){
         return road_surface_tableMapper.getRST();
     }
-    public List<Road_surface_information> getRPbyRoad(int road_code, String history, String toady){
-        return road_surface_tableMapper.getRPbyRoad(road_code,history,toady);
+    public List<Road_surface_information> getRPbyRoad(String road_name, String history, String toady){
+        return road_surface_tableMapper.getRPbyRoad(road_name,history,toady);
     }
 }

@@ -11,13 +11,13 @@
         #{yanghu_class},#{road_width_range},#{road_length},#{road_area},#{AADT},#{traffic_class},#{town},
         #{manage_sort},#{manage_unite},#{maintenance_unite},#{build_date},#{table_unite},#{auditor},#{table_maker},
         #{table_make_time},#{road_prevent});
-        insert into
-       road_surface_table (regular_code,road_code,road_name)
-        value ((select regular_code from regular_inspection_table where regular_type=#{regular_type}),#{road_code},#{road_name});
-        insert into
-        road_damage_table (regular_code,road_code)
-        value ((select regular_code from rmsystem.regular_inspection_table where regular_type='道路设施检查'),#{road_code});
 
+        insert into
+        regular_inspection_table (road_name,regular_type)
+        values (#{road_name},regular_type='常规检查');
+        insert into
+        regular_inspection_table (road_name,regular_type)
+        values (#{road_name},regular_type='道路设施检查');
     </insert>
     <delete id="deleteRBT" parameterType="com.wuyue.rmsystem.model.Road_Basic_Table">
         delete from

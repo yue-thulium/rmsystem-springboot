@@ -14,8 +14,8 @@ import java.util.List;
 public class Road_Basic_TableService {
     @Autowired
     Road_Basic_TableMapper road_basic_tableMapper;
-    public void addRBT(Road_Basic_Table rbt,String regular_type){
-        road_basic_tableMapper.addRBT(rbt,regular_type);
+    public void addRBT(Road_Basic_Table rbt){
+        road_basic_tableMapper.addRBT(rbt);
     }
     public void deleteRBT(Road_Basic_Table rbt){
         road_basic_tableMapper.deleteRBT(rbt);

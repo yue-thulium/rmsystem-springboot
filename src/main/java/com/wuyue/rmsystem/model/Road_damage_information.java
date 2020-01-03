@@ -5,7 +5,7 @@ import java.util.Date;
 public class Road_damage_information {
     private int damage_code;              //路面损坏记录编号
     private String worker_code_name;            //检查人员姓名
-    private int road_code;                //道路编号
+    private String road_name;                //道路编号
     private int regular_code;             //定期检查记录编号
     private Date check_date;       //检查日期(年检)
     private String begin_end;                 //起止位置
@@ -21,7 +21,6 @@ public class Road_damage_information {
     private String manage_unite;               //管理单位
     private Date make_date;              //制表日期
     private String ifneed;                //需要巡逻
-    private String road_name;
 
     public String getWorker_code_name() {
         return worker_code_name;
@@ -29,14 +28,6 @@ public class Road_damage_information {
 
     public void setWorker_code_name(String worker_code_name) {
         this.worker_code_name = worker_code_name;
-    }
-
-    public int getRoad_code() {
-        return road_code;
-    }
-
-    public void setRoad_code(int road_code) {
-        this.road_code = road_code;
     }
 
     public String getIfneed() {

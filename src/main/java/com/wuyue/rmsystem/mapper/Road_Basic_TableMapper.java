@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface Road_Basic_TableMapper {
-    int addRBT(Road_Basic_Table road_basic_table,@Param("regular_type")String regular_type);
+    int addRBT(Road_Basic_Table road_basic_table);
     int deleteRBT(Road_Basic_Table road_basic_table);
     int updateRBT(Road_Basic_Table road_basic_table);
     List<Road_Basic_Table> getRBT(String store);

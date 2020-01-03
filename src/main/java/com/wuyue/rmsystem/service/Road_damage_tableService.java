@@ -25,7 +25,7 @@ public class Road_damage_tableService {
     public List<Road_damage_information> getRDT(){
         return road_damage_tableMapper.getRDT();
     }
-    public List<Road_damage_information> getRPbyRoad(int road_code, String history, String toady){
-        return road_damage_tableMapper.getRPbyRoad(road_code,history,toady);
+    public List<Road_damage_information> getRPbyRoad(String road_name, String history, String toady){
+        return road_damage_tableMapper.getRPbyRoad(road_name,history,toady);
     }
 }

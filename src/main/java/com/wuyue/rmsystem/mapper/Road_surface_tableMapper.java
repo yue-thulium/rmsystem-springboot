@@ -12,5 +12,5 @@ public interface Road_surface_tableMapper {
     int deleteRST(Road_surface_information road_surface_information);
     int updateRST(Road_surface_information road_surface_information);
     List<Road_surface_information> getRST();
-    List<Road_surface_information> getRPbyRoad(@Param("road_code")int road_code, @Param("history")String history, @Param("today")String today);
+    List<Road_surface_information> getRPbyRoad(@Param("road_name")String road_name, @Param("history")String history, @Param("today")String today);
 }

@@ -6,7 +6,6 @@ public class Road_surface_information {
     private int surface_code;                //路面平整度记录编号
     private int regular_code;                //定期检查记录编号
     private String worker_code_name;                  //检查人员姓名
-    private int road_code;                   //道路编号
     private String road_name;                //道路名称
     private Date check_date;          //检查日期
     private float IRI;                       //IRI,IRI为国际平整度指数
@@ -70,14 +69,6 @@ public class Road_surface_information {
 
     public void setWorker_name(String worker_name) {
         this.worker_code_name = worker_name;
-    }
-
-    public int getRoad_code() {
-        return road_code;
-    }
-
-    public void setRoad_code(int road_code) {
-        this.road_code = road_code;
     }
 
     public String getRoad_name() {

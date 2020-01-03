@@ -30,8 +30,6 @@ public class RoadCheckController {
     @Autowired
     Road_surface_tableService road_surface_tableService;
     @Autowired
-    Regular_inspection_tableService regular_inspection_tableService;
-    @Autowired
     Road_damage_tableService road_damage_tableService;
 
     /**
@@ -243,7 +241,7 @@ public class RoadCheckController {
             calendar.add(Calendar.YEAR,-i);
             history = calendar.getTime();
 
-            List<Road_surface_information> regular_inspection_informations=road_surface_tableService.getRPbyRoad(r.getRoad_code(),formatter.format(history),formatter.format(date));
+            List<Road_surface_information> regular_inspection_informations=road_surface_tableService.getRPbyRoad(r.getRoad_name(),formatter.format(history),formatter.format(date));
             if (regular_inspection_informations.size()>0){
                 r.setIfneed("否");
                 r.setAddPr(true);
@@ -269,7 +267,7 @@ public class RoadCheckController {
             calendar.add(Calendar.DAY_OF_YEAR,-i);
             history = calendar.getTime();
 
-            List<Road_damage_information> regular_inspection_informations=road_damage_tableService.getRPbyRoad(r.getRoad_code(),formatter.format(history),formatter.format(date));
+            List<Road_damage_information> regular_inspection_informations=road_damage_tableService.getRPbyRoad(r.getRoad_name(),formatter.format(history),formatter.format(date));
             if (regular_inspection_informations.size()>0){
                 r.setIfneed("否");
                 r.setAddPr(true);

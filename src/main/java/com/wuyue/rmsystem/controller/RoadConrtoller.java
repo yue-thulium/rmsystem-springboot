@@ -26,7 +26,7 @@ public class RoadConrtoller {
 //regular_date,regular_type
     @RequestMapping(value = "/addRoad", method = RequestMethod.POST)
     public void addRoad(Road_Basic_Table rbt) {
-        road_basic_tableService.addRBT(rbt,"常规检查");
+        road_basic_tableService.addRBT(rbt);
     }
 
     @RequestMapping(value = "/updateRoad", method = RequestMethod.POST)
