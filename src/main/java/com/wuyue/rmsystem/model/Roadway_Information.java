@@ -6,9 +6,9 @@ public class Roadway_Information {
     private int car_code;                   //车行道编号
     private int road_code;                  //道路编号
     private String pavement_type;               //路面类型
-    private float pavement_thickness;      //路面厚度
+    private String pavement_thickness;      //路面厚度
     private String grassroots_type;        //基层类型
-    private float grassroots_thickness;          //基层厚度
+    private String grassroots_thickness;          //基层厚度
     private int lanes;           //车道数
     private String direction;   //通行方向
     private String motorway_width_range;   //机动车道宽度范围,原来是float
@@ -42,11 +42,11 @@ public class Roadway_Information {
         this.pavement_type = pavement_type;
     }
 
-    public float getPavement_thickness() {
+    public String getPavement_thickness() {
         return pavement_thickness;
     }
 
-    public void setPavement_thickness(float pavement_thickness) {
+    public void setPavement_thickness(String pavement_thickness) {
         this.pavement_thickness = pavement_thickness;
     }
 
@@ -58,11 +58,11 @@ public class Roadway_Information {
         this.grassroots_type = grassroots_type;
     }
 
-    public float getGrassroots_thickness() {
+    public String getGrassroots_thickness() {
         return grassroots_thickness;
     }
 
-    public void setGrassroots_thickness(float grassroots_thickness) {
+    public void setGrassroots_thickness(String grassroots_thickness) {
         this.grassroots_thickness = grassroots_thickness;
     }
 
