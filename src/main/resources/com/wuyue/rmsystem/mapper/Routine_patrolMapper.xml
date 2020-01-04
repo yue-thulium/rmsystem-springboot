@@ -7,7 +7,7 @@
         insert into
        routine_patrol
         values (#{patrol_code},(select worker_code from worker where name = #{woker_code_name}),#{road_code},#{patrol_date}
-        ,#{d_type},#{d_position_description},#{remarks},#{manage_unit});
+        ,#{d_type},#{d_position_description},#{remark},#{manage_unite});
     </insert>
     <delete id="deleteRP" parameterType="com.wuyue.rmsystem.model.Routine_patrol">
         delete from
@@ -19,7 +19,7 @@
         update
         routine_patrol
         set worker_code=(select worker_code from worker where name = #{woker_code_name}),road_code=#{road_code},patrol_date=#{patrol_date},
-        d_type#{d_type},d_position_description=#{d_position_description},remarks=#{remarks},manage_unit=#{manage_unit})
+        d_type#{d_type},d_position_description=#{d_position_description},remark=#{remark},manage_unite=#{manage_unite})
         where
         patrol_code=#{patrol_code};
     </update>

@@ -50,7 +50,7 @@ public class RoadConrtoller {
         map.put("tabledata",road_basic_tables);
         return map;
     }
-    @RequestMapping(value = "/getRBTbyroad",method = RequestMethod.GET)
+    @RequestMapping(value = "/getRBTbyroad",method = RequestMethod.POST)
     public Map<String,Object> getRBTbyroad(int road_code){
         Map<String, Object> map = new HashMap<>();
         List<Road_Basic_Table> road_basic_tables=road_basic_tableService.getRBTbyroad(road_code);
@@ -102,7 +102,7 @@ public class RoadConrtoller {
     public void updateRoad_Divider(Divider_band_information si) {
         divider_band_tableService.updateDBT(si);
     }
-    @RequestMapping(value = "/getRoad_divider", method = RequestMethod.GET)
+    @RequestMapping(value = "/getRoad_divider", method = RequestMethod.POST)
     public Map<String, Object> getRoad_Divider(int road_code){
         Map<String, Object> map = new HashMap<>();
         List<Divider_band_information> divider_band_informations=divider_band_tableService.getDBT(road_code);
@@ -128,7 +128,7 @@ public class RoadConrtoller {
     /**
      * 道路年报
      */
-    @RequestMapping(value="/getfacilities_yearly_report",method = RequestMethod.GET)
+    @RequestMapping(value="/getfacilities_yearly_report",method = RequestMethod.POST)
     public Map<String, Object> getfacilities_yearly_report(int road_code){
         Map<String, Object> map = new HashMap<>();
         List<Year_Facility_report> year_facility_reports=facilities_yearly_reportService.getFYR();

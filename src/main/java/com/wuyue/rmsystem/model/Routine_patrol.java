@@ -60,13 +60,13 @@ public class Routine_patrol {
      * 前端传值--String--备注
      * 可空
      */
-    private String remarks;
+    private String remark;
 
     /**
      * 前端传值--String--管理单位
      * 可空
      */
-    private String manage_unit;
+    private String manage_unite;
 
     /**
      * 非传递值--int--通过巡查人员姓名查询id
@@ -128,19 +128,19 @@ public class Routine_patrol {
     }
 
     public String getRemarks() {
-        return remarks;
+        return remark;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setRemarks(String remark) {
+        this.remark = remark;
     }
 
     public String getManage_unit() {
-        return manage_unit;
+        return manage_unite;
     }
 
-    public void setManage_unit(String manage_unit) {
-        this.manage_unit = manage_unit;
+    public void setManage_unit(String manage_unite) {
+        this.manage_unite = manage_unite;
     }
 
     public String getWoker_code_name() {
