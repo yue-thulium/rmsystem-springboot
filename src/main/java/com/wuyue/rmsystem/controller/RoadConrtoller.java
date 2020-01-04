@@ -43,6 +43,7 @@ public class RoadConrtoller {
     @RequestMapping(value = "/updateRoad", method = RequestMethod.POST)
     public void updateRoad(Road_Basic_Table rbt) {
         road_basic_tableService.updateRBT(rbt);
+        System.out.println("到了这里");
     }
 
     @RequestMapping(value = "/getRoad", method = RequestMethod.GET)

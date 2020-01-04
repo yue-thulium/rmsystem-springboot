@@ -8,7 +8,7 @@
        road_basic_table
         values (#{road_code},#{username},#{road_name},#{road_trend}
         ,#{road_begin},#{road_end},#{design_unite},#{construction_unite},#{road_class},#{pavement_class},
-        #{yanghu_class},#{road_width_range},#{road_length},#{road_area},#{AADT},#{traffic_class},#{town},
+        #{yanghu_class},#{road_width_range},#{road_length},#{road_area},#{aadt},#{traffic_class},#{town},
         #{manage_sort},#{manage_unite},#{maintenance_unite},#{build_date},#{table_unite},#{auditor},#{table_maker},
         #{table_make_time},#{road_prevent});
 
@@ -31,12 +31,12 @@
         ,road_begin=#{road_begin},road_end=#{road_end},design_unite=#{design_unite},construction_unite=#{construction_unite},
         road_class=#{road_class},pavement_class=#{pavement_class},
         yanghu_class=#{yanghu_class},road_width_range=#{road_width_range},road_length=#{road_length},road_area=#{road_area},
-        AADT=#{AADT},traffic_class=#{traffic_class},town=#{town},
+        aadt=#{aadt},traffic_class=#{traffic_class},town=#{town},
         manage_sort=#{manage_sort},manage_unite=#{manage_unite},maintenance_unite=#{maintenance_unite},build_date=#{build_date},
         table_unite=#{table_unite},auditor=#{auditor},table_maker=#{table_maker},
         table_make_time=#{table_make_time},road_prevent=#{road_prevent}
         where
-        Road_code=#{Road_code};
+        road_code=#{road_code};
     </update>
     <select id="getRBT" resultType="com.wuyue.rmsystem.model.Road_Basic_Table" parameterType="String">
         select * from road_basic_table where manage_sort=#{sort};
