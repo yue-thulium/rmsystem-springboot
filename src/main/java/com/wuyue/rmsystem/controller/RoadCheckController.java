@@ -31,6 +31,8 @@ public class RoadCheckController {
     Road_surface_tableService road_surface_tableService;
     @Autowired
     Road_damage_tableService road_damage_tableService;
+    @Autowired
+    Asphalt_pavement_tableService asphalt_pavement_tableService;
 
     /**
      * 对应RoadCheck下一类道路的日常巡查
@@ -198,7 +200,7 @@ public class RoadCheckController {
     @RequestMapping(value = "/ri/updateRDT",method = RequestMethod.POST)
     public void updateRDT(Road_damage_information rdt) {
         road_damage_tableService.updateRDT(rdt);
-        road_damage_tableService.update_insert_APT(rdt);
+        asphalt_pavement_tableService.addAPT(EditData_APT(rdt));
     }
 
     /**
@@ -286,13 +288,30 @@ public class RoadCheckController {
      */
     private Asphalt_pavement_damage_information EditData_APT(Road_damage_information rdi){
 
+        float D_density=0;
         Asphalt_pavement_damage_information apdi=new Asphalt_pavement_damage_information();
         apdi.setDamage_code(rdi.getDamage_code());
         apdi.setWorker_code_name_name(rdi.getWorker_code_name());
         apdi.setInspect_areas(rdi.getLength()*rdi.getWidth());
         apdi.setD_type(rdi.getDamage_type());
         apdi.setD_areas(rdi.getD_areas());
-        apdi.setD_density(apdi.getD_areas()/(rdi.getLength()*rdi.getWidth()));
+        apdi.setD_density((rdi.getD_areas()*100)/(rdi.getLength()*rdi.getWidth()));
+
+        if(apdi.getD_density()<0.01)
+            D_density=(float) 0.01;
+        else if(apdi.getD_density()<0.1)
+            D_density=(float) 0.1;
+        else if (apdi.getD_density()<1)
+            D_density=1;
+        else if (apdi.getD_density()<10)
+            D_density=10;
+        else if (apdi.getD_density()<50)
+            D_density=50;
+        else if (apdi.getD_density()<=100)
+            D_density=100;
+        rdi.setD_density(D_density);
+        apdi.setSingle_point_deduction(road_damage_tableService.getSingle_point_deduction(rdi));
+
         apdi.setRemark(rdi.getRemark());
         apdi.setInspect_date(rdi.getMake_date());
 

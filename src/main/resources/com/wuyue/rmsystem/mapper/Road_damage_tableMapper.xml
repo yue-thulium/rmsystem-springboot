@@ -33,4 +33,7 @@
         and <![CDATA[ make_date>=#{history}
         and  make_date<=#{today} ]]>;
     </select>
+    <select id="getSingle_point_deduction" parameterType="com.wuyue.rmsystem.model.Road_damage_information" resultType="int">
+        select 单项扣分值 from 沥青路面损坏单项扣分表 where 损坏类型=#{damage_type} and 损坏密度=#{d_density};
+    </select>
 </mapper>

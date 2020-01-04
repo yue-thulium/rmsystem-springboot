@@ -28,7 +28,7 @@ public class Road_damage_tableService {
     public List<Road_damage_information> getRPbyRoad(String road_name, String history, String toady){
         return road_damage_tableMapper.getRPbyRoad(road_name,history,toady);
     }
-    public void update_insert_APT(Road_damage_information rdi){
-        road_damage_tableMapper.update_insert_APT(rdi);
+    public int getSingle_point_deduction(Road_damage_information rdi){
+        return road_damage_tableMapper.getSingle_point_deduction(rdi);
     }
 }

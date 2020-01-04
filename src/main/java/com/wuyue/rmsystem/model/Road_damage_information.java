@@ -20,6 +20,15 @@ public class Road_damage_information {
     private String manage_unite;               //管理单位
     private Date make_date;              //制表日期
     private String ifneed;                //需要巡逻
+    private float d_density;              //损坏密度
+
+    public float getD_density() {
+        return d_density;
+    }
+
+    public void setD_density(float d_density) {
+        this.d_density = d_density;
+    }
 
     public String getWorker_code_name() {
         return worker_code_name;

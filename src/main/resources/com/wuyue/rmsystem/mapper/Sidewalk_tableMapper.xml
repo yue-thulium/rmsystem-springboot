@@ -7,7 +7,7 @@
         insert into
         sidewalk_table
         values (#{sidewalk_code},#{road_code},#{direction},#{pavement_type}
-        ,#{sidewalk_length},#{sidewalk_width_range},#{sidewalk_areas},#{intersection_areas},#{blind_length},#{Accessibility_areas},
+        ,#{sidewalk_length},#{sidewalk_width_range},#{sidewalk_areas},#{intersection_areas},#{blind_length},#{accessibility_areas},#{greenbelt_areas},
         #{lateral_rock_type},#{flat_rock_areas});
     </insert>
     <delete id="deleteST" parameterType="com.wuyue.rmsystem.model.Sidewalk_information">
@@ -21,7 +21,7 @@
         sidewalk_table
         set road_code=#{road_code},direction=#{direction},pavement_type=#{pavement_type}
         ,sidewalk_length=#{sidewalk_length},sidewalk_width_range=#{sidewalk_width_range},sidewalk_areas=#{sidewalk_areas},
-        intersection_areas=#{intersection_areas},blind_length=#{blind_length},Accessibility_areas=#{Accessibility_areas},
+        intersection_areas=#{intersection_areas},blind_length=#{blind_length},accessibility_areas=#{accessibility_areas},greenbelt_areas=#{greenbelt_areas},
         lateral_rock_type=#{lateral_rock_type},flat_rock_areas=#{flat_rock_areas}
         where
         sidewalk_code=#{sidewalk_code};

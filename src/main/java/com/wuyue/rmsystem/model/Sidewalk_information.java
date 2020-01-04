@@ -10,8 +10,8 @@ public class Sidewalk_information {
     private float sidewalk_areas;          //直线面积
     private float intersection_areas;     //交叉口面积
     private float blind_length;     //盲道长度
-    private float Accessibility_areas;                //无障碍通道面积
-    private float L_W_greenbelt_areasmotor;                //绿化带面积
+    private float accessibility_areas;                //无障碍通道面积
+    private float greenbelt_areas;                //绿化带面积
     private String Roadway_area;            //侧石类型
     private String Lateral_rock_type;       //平石类型
 
@@ -88,19 +88,19 @@ public class Sidewalk_information {
     }
 
     public float getAccessibility_areas() {
-        return Accessibility_areas;
+        return accessibility_areas;
     }
 
     public void setAccessibility_areas(float accessibility_areas) {
-        Accessibility_areas = accessibility_areas;
+        this.accessibility_areas = accessibility_areas;
     }
 
-    public float getL_W_greenbelt_areasmotor() {
-        return L_W_greenbelt_areasmotor;
+    public float getGreenbelt_areas() {
+        return greenbelt_areas;
     }
 
-    public void setL_W_greenbelt_areasmotor(float l_W_greenbelt_areasmotor) {
-        L_W_greenbelt_areasmotor = l_W_greenbelt_areasmotor;
+    public void setGreenbelt_areas(float greenbelt_areas) {
+        this.greenbelt_areas = greenbelt_areas;
     }
 
     public String getRoadway_area() {
