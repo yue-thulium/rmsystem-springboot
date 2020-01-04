@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=06397cf2b95f27eb50fd1ef22c720eab&plugin=AMap.MouseTool"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <!-- 鼠标右键菜单栏 -->
+    <style>
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .context_menu{
+            position: relative;
+            min-width: 12rem;
+            padding: 0;
+        }
+
+        .context_menu p{
+            cursor: pointer;
+            padding: 0.25rem 1.25rem;
+        }
+
+        .context_menu p:hover{
+            background: #ccc;
+        }
+    </style>
+
+    <style>
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="container"></div>
+<div id="myPageTop">
+    <table>
+        <tr>
+            <td>
+                <label>请输入道路名字：</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="tipinput"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- 加载地图JSAPI脚本 -->
+<script>
+    var lnglat = new AMap.LngLat(106.550464,29.563761);
+
+    var map = new AMap.Map("container", {
+        center: lnglat,
+        zoom: 14,
+        resizeEnable: true
+    });
+
+    //创建右键菜单
+    var menu = new ContextMenu(map);
+
+    //自定义菜单类
+    function ContextMenu(map) {
+        var me = this;
+
+        //地图中添加鼠标工具MouseTool插件
+        this.mouseTool = new AMap.MouseTool(map);
+
+        this.contextMenuPositon = null;
+
+        var content = [];
+
+        content.push("<div class='info context_menu'>");
+        content.push("  <p onclick='menu.zoomMenu(0)'>缩小</p>");
+        content.push("  <p class='split_line' onclick='menu.zoomMenu(1)'>放大</p>");
+        content.push("  <p class='split_line' onclick='menu.distanceMeasureMenu()'>距离量测</p>");
+        content.push("  <p onclick='menu.addMarkerMenu()'>添加标记</p>");
+        content.push("  <p onclick='menu.setMarkers()'>添加点</p>");
+        content.push("  <p onclick='menu.delMarkers()'>删除标记</p>");
+        content.push("  <p onclick='menu.drawRoad()'>画出路线</p>");
+        content.push("</div>");
+
+        //通过content自定义右键菜单内容
+        this.contextMenu = new AMap.ContextMenu({isCustom: true, content: content.join('')});
+
+        //地图绑定鼠标右击事件——弹出右键菜单
+        map.on('rightclick', function (e) {
+            me.contextMenu.open(map, e.lnglat);
+            me.contextMenuPositon = e.lnglat; //右键菜单位置
+        });
+    }
+    ContextMenu.prototype.zoomMenu = function zoomMenu(tag) {//右键菜单缩放地图
+        if (tag === 0) {
+            map.zoomOut();
+        }
+        if (tag === 1) {
+            map.zoomIn();
+        }
+        this.contextMenu.close();
+    };
+
+    ContextMenu.prototype.distanceMeasureMenu = function () {  //右键菜单距离量测
+        this.mouseTool.rule();
+        this.contextMenu.close();
+    };
+
+    ContextMenu.prototype.addMarkerMenu = function () {  //右键菜单添加Marker标记
+        this.mouseTool.close();
+        var marker = new AMap.Marker({
+            map: map,
+            position: this.contextMenuPositon,//基点位置
+            icon: new AMap.Icon({
+                image: "./marker.png",
+                size: new AMap.Size(52, 52),  //图标大小
+                imageSize: new AMap.Size(26,26)
+            }),
+        });
+        this.contextMenu.close();
+    };
+
+    var markers = [];
+    ContextMenu.prototype.setMarkers = function (center_positions){
+
+        var positions = center_positions;
+        // console.log(positions);
+        // console.log(positions.length);
+        for (var i = 0, marker; i < positions.length; i++) {
+
+            marker = new AMap.Marker({
+                map: map,
+                position: positions[i],
+                icon: new AMap.Icon({
+                    image: "./marker.png",
+                    size: new AMap.Size(52, 52),  //图标大小
+                    imageSize: new AMap.Size(26,26)
+                }),
+                offset: new AMap.Pixel(-13, -30)
+            });
+            markers.push(marker);
+            marker.on('click',function(){
+                var text= document.getElementById("tipinput").value;
+                console.log(text);
+            })
+
+        }
+        this.contextMenu.close();
+    }
+
+    ContextMenu.prototype.delMarkers = function (){
+        map.remove(markers);
+        this.contextMenu.close();
+    }
+
+    ContextMenu.prototype.drawRoad=function() {
+        AMap.service(["AMap.RoadInfoSearch"], function () {
+            var roadSearch = new AMap.RoadInfoSearch({ //构造地点查询类
+                pageSize: 5,
+                pageIndex: 1,
+                city: "023"
+            });
+            //关键字查询
+            var center_position=[];
+            var keywords = document.getElementById("tipinput").value;
+            roadSearch.roadInfoSearchByRoadName(keywords, function (status, result) {
+                for (let i = 0; i < result.roadInfo.length; i++) {
+                    const element = result.roadInfo[i];
+                    for (let j = 0; j < element.path.length; j++) {
+
+                        const path = element.path[j];
+
+                        if (j == 0){
+                            center_position.push([path[0]["Q"],path[0]["P"]]);
+                        }
+                        const polyline = new AMap.Polyline({
+                            path: path,
+                            borderWeight: 2, // 线条宽度，默认为 1
+                            strokeColor: 'red', // 线条颜色
+                            lineJoin: 'round' // 折线拐点连接处样式
+                        });
+                        map.add(polyline)
+                    }
+                    map.setFitView();
+                }
+                menu.setMarkers(center_position);
+            });
+
+        })
+    };
+
+    //跳转显示道路信息
+    function show_road_information(e){
+
+    }
+
+
+
+
+    //输入提示
+    // var autoOptions = {
+    //     input: "tipinput"
+    // };
+    // var auto = new AMap.Autocomplete(autoOptions);
+    // var placeSearch = new AMap.PlaceSearch({
+    //     map: map
+    // });  //构造地点查询类
+    //
+    // AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+    // function select(e) {
+    //     placeSearch.setCity(e.poi.adcode);
+    //     placeSearch.search(e.poi.name);  //关键字查询查询
+    // }
+    menu.contextMenu.open(map, lnglat);
+
+
+</script>
+</body>
+</html>
