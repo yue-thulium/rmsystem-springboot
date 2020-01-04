@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Year_Facility_report {
     private Date check_date;          //检查日期
-    private int road_code;              //道路编号
+    private String road_name;              //道路编号
     private float evaluation_index;          //综合评价指数
     private float planeness;                 //平整度
     private String damage_condition;       //破损状况
@@ -17,12 +17,12 @@ public class Year_Facility_report {
         this.check_date = check_date;
     }
 
-    public int getRoad_code() {
-        return road_code;
+    public String getRoad_name() {
+        return road_name;
     }
 
-    public void setRoad_code(int road_code) {
-        this.road_code = road_code;
+    public void setRoad_name(String road_name) {
+        this.road_name = road_name;
     }
 
     public float getEvaluation_index() {

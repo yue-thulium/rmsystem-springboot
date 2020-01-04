@@ -6,7 +6,7 @@
     <insert id="addFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
         insert into
        facilities_yearly_report
-        values (#{check_date},#{road_code},#{evaluation_index},#{planeness}
+        values (#{check_date},#{road_name},#{evaluation_index},#{planeness}
         ,#{damage_condition});
     </insert>
     <delete id="deleteFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
@@ -17,7 +17,7 @@
     <update id="updateFYR" parameterType="com.wuyue.rmsystem.model.Year_Facility_report">
         UPDATE
         facilities_yearly_report
-        SET road_code=#{road_code},evaluation_index=#{evaluation_index},planeness=#{planeness},
+        SET road_name=#{road_name},evaluation_index=#{evaluation_index},planeness=#{planeness},
         damage_condition=#{damage_condition}
         where check_date=#{check_date};
     </update>

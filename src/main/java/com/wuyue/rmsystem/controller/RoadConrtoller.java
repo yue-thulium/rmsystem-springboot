@@ -36,7 +36,7 @@ public class RoadConrtoller {
     @RequestMapping(value = "/addRoad", method = RequestMethod.POST)
     public void addRoad(Road_Basic_Table rbt) {
         road_basic_tableService.addRBT(rbt);
-        facilities_yearly_reportService.addFYR(insert_YFR(rbt.getRoad_code()));
+        facilities_yearly_reportService.addFYR(insert_YFR(rbt.getRoad_code(),rbt.getRoad_name()));
     }
 
     @RequestMapping(value = "/updateRoad", method = RequestMethod.POST)
@@ -135,11 +135,11 @@ public class RoadConrtoller {
         map.put("tabledata",year_facility_reports);
         return map;
     }
-    public Year_Facility_report insert_YFR(int road_code){
+    public Year_Facility_report insert_YFR(int road_code,String  road_name){
         Date date = new Date(System.currentTimeMillis());
         List<Road_surface_information> road_surface_informations=facilities_yearly_reportService.getIRI(road_code);
         Year_Facility_report yfr=new Year_Facility_report();
-        yfr.setRoad_code(road_code);
+        yfr.setRoad_name(road_name);
         return yfr;
     }
 }
