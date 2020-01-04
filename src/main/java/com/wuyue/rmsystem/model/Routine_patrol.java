@@ -127,19 +127,19 @@ public class Routine_patrol {
         this.d_position_description = d_position_description;
     }
 
-    public String getRemarks() {
+    public String getRemark() {
         return remark;
     }
 
-    public void setRemarks(String remark) {
+    public void setRemark(String remark) {
         this.remark = remark;
     }
 
-    public String getManage_unit() {
+    public String getManage_unite() {
         return manage_unite;
     }
 
-    public void setManage_unit(String manage_unite) {
+    public void setManage_unite(String manage_unite) {
         this.manage_unite = manage_unite;
     }
 
