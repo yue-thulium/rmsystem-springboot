@@ -290,6 +290,7 @@ public class RoadCheckController {
 
         float D_density=0;
         Asphalt_pavement_damage_information apdi=new Asphalt_pavement_damage_information();
+        apdi.setAsphalt_pavement_code(rdi.getDamage_code()+1);
         apdi.setDamage_code(rdi.getDamage_code());
         apdi.setWorker_code_name_name(rdi.getWorker_code_name());
         apdi.setInspect_areas(rdi.getLength()*rdi.getWidth());
