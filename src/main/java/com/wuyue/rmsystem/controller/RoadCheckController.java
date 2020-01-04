@@ -306,15 +306,15 @@ public class RoadCheckController {
         apdi.setD_areas(rdi.getD_areas());
         apdi.setD_density((rdi.getD_areas()*100)/(rdi.getLength()*rdi.getWidth()));
 
-        if(apdi.getD_density()<0.01)
+        if(apdi.getD_density()<=0.01)
             D_density=(float) 0.01;
-        else if(apdi.getD_density()<0.1)
+        else if(apdi.getD_density()<=0.1)
             D_density=(float) 0.1;
-        else if (apdi.getD_density()<1)
+        else if (apdi.getD_density()<=1)
             D_density=1;
-        else if (apdi.getD_density()<10)
+        else if (apdi.getD_density()<=10)
             D_density=10;
-        else if (apdi.getD_density()<50)
+        else if (apdi.getD_density()<=50)
             D_density=50;
         else if (apdi.getD_density()<=100)
             D_density=100;
