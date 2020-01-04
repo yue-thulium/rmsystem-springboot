@@ -16,4 +16,5 @@ public interface Road_Basic_TableMapper {
     int deleteDFN(int id);
     List<Road_Basic_Table> getRBTall();
     int changeState(Road_Basic_Table road_basic_table);
+    List<Road_Basic_Table> getRBTbyroad(int road_code);
 }

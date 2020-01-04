@@ -50,6 +50,13 @@ public class RoadConrtoller {
         map.put("tabledata",road_basic_tables);
         return map;
     }
+    @RequestMapping(value = "/getRBTbyroad",method = RequestMethod.GET)
+    public Map<String,Object> getRBTbyroad(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Road_Basic_Table> road_basic_tables=road_basic_tableService.getRBTbyroad(road_code);
+        map.put("tabledata",road_basic_tables);
+        return map;
+    }
     @RequestMapping(value = "/deleteRoad", method = RequestMethod.POST)
     public void deleteRoad(Road_Basic_Table rbt){
         road_basic_tableService.deleteRBT(rbt);

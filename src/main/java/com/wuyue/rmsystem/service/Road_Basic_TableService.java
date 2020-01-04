@@ -38,4 +38,7 @@ public class Road_Basic_TableService {
     public List<Road_Basic_Table> getRBTall(){
         return road_basic_tableMapper.getRBTall();
     }
+    public List<Road_Basic_Table> getRBTbyroad(int road_code){
+        return road_basic_tableMapper.getRBTbyroad(road_code);
+    }
 }

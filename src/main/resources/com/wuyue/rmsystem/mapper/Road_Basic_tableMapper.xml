@@ -44,6 +44,9 @@
     <select id="getRBTall" resultType="com.wuyue.rmsystem.model.Road_Basic_Table" >
         select * from road_basic_table ;
     </select>
+    <select id="getRBTbyroad" resultType="com.wuyue.rmsystem.model.Road_Basic_Table" parameterType="int">
+        select * from road_basic_table where road_code=#{road_code};
+    </select>
     <update id="addDFN" parameterType="int">
         update road_basic_table set road_prevent='false' where road_code=#{id};
     </update>
