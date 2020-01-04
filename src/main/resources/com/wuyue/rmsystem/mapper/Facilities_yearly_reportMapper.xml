@@ -24,4 +24,7 @@
     <select id="getFYR" resultType="com.wuyue.rmsystem.model.Year_Facility_report">
         select * from facilities_yearly_report;
     </select>
+    <select id="getIRI" parameterType="int" resultType="com.wuyue.rmsystem.model.Road_surface_information">
+        select * from road_surface_table where road_name=(select road_name from road_basic_table where road_code=#{road_code});
+    </select>
 </mapper>

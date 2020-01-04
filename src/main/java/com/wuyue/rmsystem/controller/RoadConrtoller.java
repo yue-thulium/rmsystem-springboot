@@ -30,10 +30,13 @@ public class RoadConrtoller {
     Divider_band_tableService divider_band_tableService;
     @Autowired
     Facilities_tableService facilities_tableService;
+    @Autowired
+    Facilities_yearly_reportService facilities_yearly_reportService;
 //regular_date,regular_type
     @RequestMapping(value = "/addRoad", method = RequestMethod.POST)
     public void addRoad(Road_Basic_Table rbt) {
         road_basic_tableService.addRBT(rbt);
+        facilities_yearly_reportService.addFYR(insert_YFR(rbt.getRoad_code()));
     }
 
     @RequestMapping(value = "/updateRoad", method = RequestMethod.POST)
@@ -114,5 +117,29 @@ public class RoadConrtoller {
         List<Facilities_information> facilities_informations=facilities_tableService.getFT(road_code);
         map.put("tabledata",facilities_informations);
         return map;
+    }
+    /**
+     * 道路年报
+     */
+    @RequestMapping(value="/getfacilities_yearly_report",method = RequestMethod.GET)
+    public Map<String, Object> getfacilities_yearly_report(int road_code){
+        Map<String, Object> map = new HashMap<>();
+        List<Year_Facility_report> year_facility_reports=facilities_yearly_reportService.getFYR();
+        map.put("tabledata",year_facility_reports);
+        return map;
+    }
+    public Year_Facility_report insert_YFR(int road_code){
+        Date date = new Date(System.currentTimeMillis());
+        float PQI = 0;float PCI=25;float IRI=0;
+        List<Road_surface_information> road_surface_informations=facilities_yearly_reportService.getIRI(road_code);
+        IRI=road_surface_informations.get(road_surface_informations.size()-1).getIRI();
+        Year_Facility_report yfr=new Year_Facility_report();
+        yfr.setRoad_code(road_code);
+        yfr.setCheck_date(date);
+        PQI=(float)( 20*0.6*(4.98-0.34*IRI)+PCI*0.4);
+        yfr.setEvaluation_index(PQI);
+        yfr.setPlaneness((float)(4.98-0.34*IRI));
+        yfr.setDamage_condition(PCI+"");
+        return yfr;
     }
 }
