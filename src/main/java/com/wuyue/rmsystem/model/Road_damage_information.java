@@ -7,7 +7,6 @@ public class Road_damage_information {
     private String worker_code_name;            //检查人员姓名
     private String road_name;                //道路编号
     private int regular_code;             //定期检查记录编号
-    private Date check_date;       //检查日期(年检)
     private String begin_end;                 //起止位置
     private float length;           //长度
     private float width;            //检查总宽
@@ -70,14 +69,6 @@ public class Road_damage_information {
 
     public void setRegular_code(int regular_code) {
         this.regular_code = regular_code;
-    }
-
-    public Date getCheck_date() {
-        return check_date;
-    }
-
-    public void setCheck_date(Date check_date) {
-        this.check_date = check_date;
     }
 
     public String getBegin_end() {

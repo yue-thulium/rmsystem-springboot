@@ -22,11 +22,11 @@ public class Asphalt_pavement_damage_information {
         this.asphalt_pavement_code = asphalt_pavement_code;
     }
 
-    public String getWorker_name() {
+    public String getWorker_code_name_name() {
         return worker_code_name;
     }
 
-    public void setWorker_name(String worker_code_name) {
+    public void setWorker_code_name_name(String worker_code_name) {
         this.worker_code_name = worker_code_name;
     }
 

@@ -13,4 +13,5 @@ public interface Road_damage_tableMapper {
     int updateRDT(Road_damage_information road_damage_information);
     List<Road_damage_information> getRDT();
     List<Road_damage_information> getRPbyRoad(@Param("road_name")String road_name, @Param("history")String history, @Param("today")String today);
+    int update_insert_APT(Road_damage_information road_damage_information);
 }

@@ -198,6 +198,7 @@ public class RoadCheckController {
     @RequestMapping(value = "/ri/updateRDT",method = RequestMethod.POST)
     public void updateRDT(Road_damage_information rdt) {
         road_damage_tableService.updateRDT(rdt);
+        road_damage_tableService.update_insert_APT(rdt);
     }
 
     /**
@@ -277,5 +278,24 @@ public class RoadCheckController {
             }
         }
         return list;
+    }
+    /**
+     *
+     * 沥青路面在道路损坏调查之后更新
+     * 需要对数据进行一些处理
+     */
+    private Asphalt_pavement_damage_information EditData_APT(Road_damage_information rdi){
+
+        Asphalt_pavement_damage_information apdi=new Asphalt_pavement_damage_information();
+        apdi.setDamage_code(rdi.getDamage_code());
+        apdi.setWorker_code_name_name(rdi.getWorker_code_name());
+        apdi.setInspect_areas(rdi.getLength()*rdi.getWidth());
+        apdi.setD_type(rdi.getDamage_type());
+        apdi.setD_areas(rdi.getD_areas());
+        apdi.setD_density(apdi.getD_areas()/(rdi.getLength()*rdi.getWidth()));
+        apdi.setRemark(rdi.getRemark());
+        apdi.setInspect_date(rdi.getMake_date());
+
+        return apdi;
     }
 }

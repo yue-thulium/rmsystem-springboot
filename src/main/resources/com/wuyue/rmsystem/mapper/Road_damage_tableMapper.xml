@@ -6,8 +6,8 @@
     <insert id="addRDT" parameterType="com.wuyue.rmsystem.model.Road_damage_information">
         insert into
        road_damage_table
-        values (#{damage_code},(select worker_code from worker where name = #{worker_code_name}),#{regular_code},#{road_name},#{check_date}
-        ,#{begin_end},#{length},#{width},#{damage_type},#{d_lenth},#{d_width},
+        values (#{damage_code},(select worker_code from worker where name = #{worker_code_name}),#{regular_code},#{road_name},
+        #{begin_end},#{length},#{width},#{damage_type},#{d_lenth},#{d_width},
         #{d_height},#{d_position_description},(#{length}*#{width}),#{remark},#{manage_unite},#{make_date});
     </insert>
     <delete id="deleteRDT" parameterType="com.wuyue.rmsystem.model.Road_damage_information">
@@ -19,10 +19,11 @@
         update
         road_damage_table
         set worker_code=(select worker_code from worker where name = #{worker_code_name}),road_name=#{road_name},
-        check_date=#{check_date},begin_end=#{begin_end},length=#{length},width=#{width},damage_type=#{damage_type},d_lenth=#{d_lenth},
+        begin_end=#{begin_end},length=#{length},width=#{width},damage_type=#{damage_type},d_lenth=#{d_lenth},
         d_width=#{d_width},d_height=#{d_height},d_position_description=#{d_position_description},d_areas=#{d_areas},
         remark=#{remark},manage_unite=#{manage_unite},make_date=#{make_date}
         where damage_code=#{damage_code};
+
     </update>
     <select id="getRDT" resultType="com.wuyue.rmsystem.model.Road_damage_information">
         select * from road_damage_table;
