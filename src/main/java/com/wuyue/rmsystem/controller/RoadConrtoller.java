@@ -137,16 +137,9 @@ public class RoadConrtoller {
     }
     public Year_Facility_report insert_YFR(int road_code){
         Date date = new Date(System.currentTimeMillis());
-        float PQI = 0;float PCI=25;float IRI=0;
         List<Road_surface_information> road_surface_informations=facilities_yearly_reportService.getIRI(road_code);
-        IRI=road_surface_informations.get(road_surface_informations.size()-1).getIRI();
         Year_Facility_report yfr=new Year_Facility_report();
         yfr.setRoad_code(road_code);
-        yfr.setCheck_date(date);
-        PQI=(float)( 20*0.6*(4.98-0.34*IRI)+PCI*0.4);
-        yfr.setEvaluation_index(PQI);
-        yfr.setPlaneness((float)(4.98-0.34*IRI));
-        yfr.setDamage_condition(PCI+"");
         return yfr;
     }
 }
