@@ -6,7 +6,7 @@
     <insert id="addAPT" parameterType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
         insert into
        asphalt_pavement_table
-        values (#{asphalt_pavement_code},(select worker_code from worker where name = #{worker_code_name}),#{damage_code},#{d_type}
+        values (default ,(select worker_code from worker where name = #{worker_code_name}),#{damage_code},#{d_type}
         ,#{inspect_areas},#{d_areas},#{d_density},#{single_point_deduction},#{remark},#{inspect_date});
     </insert>
     <delete id="deleteAPT" parameterType="com.wuyue.rmsystem.model.Asphalt_pavement_damage_information">
