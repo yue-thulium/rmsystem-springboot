@@ -138,7 +138,7 @@ public class RoadConrtoller {
     /**
      * 道路年报
      */
-    @RequestMapping(value="/getfacilities_yearly_report",method = RequestMethod.POST)
+    @RequestMapping(value="/getfacilities_yearly_report",method = RequestMethod.GET)
     public Map<String, Object> getfacilities_yearly_report(){
         Map<String, Object> map = new HashMap<>();
         List<Year_Facility_report> year_facility_reports=facilities_yearly_reportService.getFYR();

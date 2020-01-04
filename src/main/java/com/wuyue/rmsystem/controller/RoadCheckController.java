@@ -203,6 +203,14 @@ public class RoadCheckController {
         asphalt_pavement_tableService.addAPT(EditData_APT(rdt));
     }
 
+    @RequestMapping(value = "/rm/route",method = RequestMethod.GET)
+    public Map<String,Object> getRoute() {
+        Map<String, Object> map = new HashMap<>();
+        List<Routine_patrol> list = routine_patrolService.getRP();
+        map.put("tabledata",list);
+        return map;
+    }
+
     /**
      * 道路信息处理
      * @param list
