@@ -22,6 +22,7 @@ import java.util.Date;
  *         }
  */
 public class Damage_facilities_notice {
+    private String test1;
 
     /**
      * 前端传值--String--通知号
